@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  color: #102225;
+  background:
+    radial-gradient(1200px 500px at 10% -15%, #f7d8b8 0%, transparent 55%),
+    radial-gradient(800px 400px at 95% 0%, #c7e7de 0%, transparent 50%),
+    linear-gradient(180deg, #f7f5f1 0%, #f1f4f4 100%);
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.vault-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin: 2rem 0 3.5rem;
+}
+
+.vault-hero__left,
+.vault-panel {
+  border-radius: 20px;
+  border: 1px solid rgba(16, 34, 37, 0.15);
+  box-shadow: 0 16px 40px rgba(16, 34, 37, 0.1);
+  animation: vault-rise 520ms ease-out both;
+}
+
+.vault-hero__left {
+  padding: 2rem;
+  background: linear-gradient(160deg, #fefdf8 0%, #f5eee1 100%);
+}
+
+.vault-kicker {
+  display: inline-block;
+  margin: 0;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid #d9965b;
+  background: rgba(217, 150, 91, 0.12);
+  color: #7d4920;
+  font-size: 0.83rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.vault-title {
+  margin: 1rem 0 0.75rem;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: clamp(2rem, 3.9vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  color: #12343a;
+}
+
+.vault-subtitle {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #2e4c51;
+}
+
+.vault-pill-row {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.vault-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: #d7ece5;
+  color: #134e4a;
+  border: 1px solid rgba(19, 78, 74, 0.25);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.vault-panel {
+  padding: 1.5rem;
+  background: linear-gradient(180deg, #12343a 0%, #1b4b52 100%);
+  color: #f4f8f7;
+  animation-delay: 120ms;
+}
+
+.vault-panel__title {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-size: 1.35rem;
+}
+
+.vault-panel__note {
+  margin: 0.55rem 0 1.1rem;
+  color: rgba(244, 248, 247, 0.84);
+}
+
+.vault-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.vault-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.vault-field label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.vault-field input {
+  width: 100%;
+  border: 1px solid rgba(231, 241, 238, 0.36);
+  border-radius: 12px;
+  padding: 0.78rem 0.9rem;
+  background: rgba(240, 248, 246, 0.97);
+  color: #12343a;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.vault-field input::placeholder {
+  color: #59777b;
+}
+
+.vault-field input:focus {
+  outline: none;
+  border-color: #f0b178;
+  box-shadow: 0 0 0 4px rgba(240, 177, 120, 0.2);
+  transform: translateY(-1px);
+}
+
+.vault-submit {
+  border: 0;
+  border-radius: 12px;
+  padding: 0.82rem 1rem;
+  background: linear-gradient(90deg, #f3a763 0%, #f08a5d 100%);
+  color: #311504;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.vault-submit:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow: 0 10px 20px rgba(240, 138, 93, 0.24);
+}
+
+.vault-submit:active {
+  transform: translateY(0);
+}
+
+@keyframes vault-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 992px) {
+  .vault-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .vault-hero {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+
+  .vault-hero__left,
+  .vault-panel {
+    padding: 1.1rem;
+    border-radius: 16px;
+  }
+
+  .vault-subtitle {
+    font-size: 0.96rem;
+  }
+}

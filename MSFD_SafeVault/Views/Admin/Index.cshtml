@@ -1,0 +1,48 @@
+@using System.Security.Claims
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<section class="vault-hero">
+    <div class="vault-hero__left">
+        <p class="vault-kicker">Authorization — Admin Only</p>
+        <h1 class="vault-title">Admin Dashboard</h1>
+        <p class="vault-subtitle">
+            This page is restricted to users with the <strong>Admin</strong> role.
+            Authorization is enforced via the <code>[Authorize(Roles = "Admin")]</code> attribute on the controller.
+            Attempting to access this page as a regular user results in an <strong>Access Denied</strong> response.
+        </p>
+        <div class="vault-pill-row" aria-hidden="true">
+            <span class="vault-pill">Role-Based Auth</span>
+            <span class="vault-pill">[Authorize] Attribute</span>
+            <span class="vault-pill">Claims Principal</span>
+        </div>
+    </div>
+
+    <aside class="vault-panel" aria-label="Admin info">
+        <h2 class="vault-panel__title">Welcome, @User.Identity?.Name</h2>
+        <p class="vault-panel__note">You are signed in with the <strong>Admin</strong> role.</p>
+
+        <div class="vault-field" style="margin-bottom: 1rem;">
+            <p><strong>Role:</strong> @User.FindFirst(ClaimTypes.Role)?.Value</p>
+            <p><strong>Email:</strong> @User.FindFirst(ClaimTypes.Email)?.Value</p>
+        </div>
+
+        <h3 style="margin-top: 1rem;">Registered Users</h3>
+        <table class="table table-sm" style="margin-top: 0.5rem;">
+            <thead>
+                <tr><th>Username</th><th>Email</th><th>Role</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var u in MSFD_SafeVault.Data.InMemoryDatabase.Users)
+                {
+                    <tr>
+                        <td>@u.Username</td>
+                        <td>@u.Email</td>
+                        <td>@u.Role</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </aside>
+</section>

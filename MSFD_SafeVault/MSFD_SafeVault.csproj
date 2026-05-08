@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
+  </ItemGroup>
+
+  <!-- Prevent the web project from compiling test project files -->
+  <ItemGroup>
+    <Compile Remove="MSFD_SafeVault.Tests\**" />
+    <Content Remove="MSFD_SafeVault.Tests\**" />
+    <EmbeddedResource Remove="MSFD_SafeVault.Tests\**" />
+    <None Remove="MSFD_SafeVault.Tests\**" />
+  </ItemGroup>
+
+</Project>

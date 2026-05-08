@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../MSFD_SafeVault.Tests"
+		}
+	],
+	"settings": {}
+}

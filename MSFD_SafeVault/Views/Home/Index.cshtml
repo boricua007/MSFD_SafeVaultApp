@@ -1,0 +1,56 @@
+﻿@* @{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div> *@
+
+@{
+    ViewData["Title"] = "SafeVault Form";
+}
+
+<section class="vault-hero">
+    <div class="vault-hero__left">
+        <p class="vault-kicker">Security Lab Demo</p>
+        <h1 class="vault-title">SafeVault Input Gateway</h1>
+        <p class="vault-subtitle">
+            Validate, sanitize, and safely process user input before it reaches storage.
+            This interface is intentionally built to showcase secure data-handling flow. <br /><br />
+        </p>
+
+        <p class="vault-subtitle">
+            SafeVault is a Microsoft demonstration project created by Daisy Viruet-Allen as part of the Microsoft Full-Stack Developer program, focused on secure user input handling in ASP.NET Core applications. 
+            It highlights best practices for validation, sanitization, and safe data storage to help developers build more secure web applications.
+            <br /><br />
+        </p>
+
+        <div class="vault-pill-row" aria-hidden="true">
+            <span class="vault-pill">Validation</span>
+            <span class="vault-pill">Sanitization</span>
+            <span class="vault-pill">Secure Query Pattern</span>
+        </div>
+    </div>
+
+    <aside class="vault-panel" aria-label="Secure input form">
+        <h2 class="vault-panel__title">Submit Input</h2>
+        <p class="vault-panel__note">Fields are validated and sanitized server-side.</p>
+
+        <form class="vault-form" action="/submit" method="post">
+            @Html.AntiForgeryToken()
+            <div class="vault-field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" maxlength="50" minlength="3" placeholder="Enter username" required>
+            </div>
+
+            <div class="vault-field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+
+            <button class="vault-submit" type="submit">Run Secure Submit</button>
+        </form>
+    </aside>
+</section>
+

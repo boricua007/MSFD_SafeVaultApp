@@ -1,0 +1,54 @@
+@model MSFD_SafeVault.Models.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<section class="vault-hero">
+    <div class="vault-hero__left">
+        <p class="vault-kicker">Authentication</p>
+        <h1 class="vault-title">Sign In to SafeVault</h1>
+        <p class="vault-subtitle">
+            Authentication verifies your identity before granting access to the system.
+            Only registered users may submit data. Administrators gain access to the Admin Dashboard.
+        </p>
+        <div class="vault-pill-row" aria-hidden="true">
+            <span class="vault-pill">Cookie Auth</span>
+            <span class="vault-pill">Password Hashing</span>
+            <span class="vault-pill">Role Claims</span>
+        </div>
+    </div>
+
+    <aside class="vault-panel" aria-label="Login form">
+        <h2 class="vault-panel__title">Login</h2>
+        <p class="vault-panel__note">
+            Seeded credentials:<br />
+            <strong>admin</strong> / <strong>Admin@123</strong> &nbsp;(Admin role)<br />
+            <strong>user1</strong> / <strong>User@123</strong> &nbsp;(User role)
+        </p>
+
+        <form class="vault-form" asp-action="Login" method="post">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+            <div asp-validation-summary="All" class="text-danger" style="margin-bottom:0.5rem;"></div>
+
+            <div class="vault-field">
+                <label asp-for="Username">Username</label>
+                <input asp-for="Username" type="text" placeholder="Enter username" autocomplete="username" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+
+            <div class="vault-field">
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" placeholder="Enter password" autocomplete="current-password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button class="vault-submit" type="submit">Sign In</button>
+        </form>
+    </aside>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

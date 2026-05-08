@@ -1,0 +1,33 @@
+MSFD SafeVault - App Overview
+
+High-Level Purpose
+- This is a small ASP.NET Core MVC security demo app.
+- It focuses on input validation, input sanitization, and secure SQL query patterns.
+
+How the App Works
+1. The user opens the home page and sees a form with Username and Email.
+2. The form posts to /submit in HomeController.
+3. ASP.NET model validation runs using UserInputModel data annotations.
+4. If valid, both fields are sanitized by InputSanitizer.
+5. Sanitized data is stored in an in-memory list.
+6. The controller also demonstrates a secure parameterized SQL lookup method.
+
+Security Behavior
+- Sanitizer removes full script blocks.
+- Sanitizer removes remaining HTML tags.
+- Sanitizer removes SQL control tokens and characters: --, ', ", ;.
+- Sanitizer trims leading/trailing whitespace.
+
+Data Layer
+- In-memory storage is used for lab/demo flow.
+- SecureDatabaseExample shows parameterized SQL:
+  SELECT Username, Email FROM Users WHERE Username = @username
+
+Testing
+- NUnit tests validate sanitizer behavior and SQL-injection pattern stripping.
+- Test output is written as TRX files in TestResults.
+- A readable Markdown summary is also generated in TestResults/test-results-summary.md.
+
+Current Scope
+- This project is a teaching/demo app, not a full production vault.
+- It does not include full auth/identity, advanced headers, or broader production hardening by default.
